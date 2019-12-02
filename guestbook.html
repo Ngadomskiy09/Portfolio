@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        html {
+            padding: 2em 5em 5em 2em;
+        }
+        textarea {
+            width: 100%;
+        }
+
+        #submit {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #format {
+            display: none;
+        }
+
+        #others {
+            display: none;
+        }
+
+        .err {
+            visibility: hidden;
+            color: darkred;
+        }
+    </style>
+
+    <title>Guestbook Log</title>
+</head>
+<body>
+
+    <div class="container">
+        <form id="guestbook-form" method="get" action="process.php">
+            <h1 class="title text-center">Guestbook Log</h1>
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="firstName"><strong>First Name</strong></label>
+                <input type="text" class="form-control" id="firstName" name="first">
+                <span class="err" id="err-fname">
+                    Please enter a first name.
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName"><strong>Last Name</strong></label>
+                <input type="text" class="form-control" id="lastName" name="last">
+                <span class="err" id="err-lname">
+                    Please enter a last name.
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="company"><strong>Company</strong></label>
+                <input type="text" class="form-control" id="company" name="company">
+            </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <div class="form-group">
+                <label for="linkedIn"><strong>LinkedIn Profile URL</strong></label>
+                <input type="text" class="form-control" id="linkedIn" name="linkedIn">
+                <span class="err" id="err-url">
+                    Please enter a Valid URL.
+                </span>
+            </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <div class="form-check text-center">
+                <input class="form-check-input" type="checkbox" onclick="func();" name="mail-list" value="mail-list" id="mail-list">
+                <label class="form-check-label" for="mail-list">
+                    <strong>Please add me to your mailing list!</strong>
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="e-mail"><strong>Email address</strong></label>
+                <input class="form-control" id="e-mail" name="e-mail" placeholder="name@example.com">
+            </div>
+            <span class="err" id="err-email">
+                Please enter a valid email with an @ and (.)
+            </span>
+
+            <label id="format" class="hidden">
+                <p><strong>Please choose an email format:</strong></p>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="method" id="html" value="html">
+                <label class="form-check-label" for="html">
+                    HTML
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="method" id="text" value="text">
+                <label class="form-check-label" for="text">
+                    Text
+                </label>
+            </div>
+            </label>
+
+        </fieldset>
+
+            <div>
+                <p><strong>Comments</strong></p>
+                <textarea></textarea>
+            </div>
+
+            <p><strong>How did we meet?</strong></p>
+            <div class="form-group">
+                <select class="form-control" id="meet" name="meet" onchange="other(this.value);">
+                    <option value="none">select an option</option>
+                    <option value="meetup">Meetup</option>
+                    <option value="job fair">Job Fair</option>
+                    <option value="other">Other</option>
+                    <option value="not yet">We haven't met yet</option>
+                </select>
+                <span class="err" id="err-choice">
+                Please choose how we met.
+            </span>
+            </div>
+
+            <div id="others" class="hide" name="other">
+                <p><strong>Other(please specify)</strong></p>
+                <textarea></textarea>
+            </div>
+
+
+            <button id="submit" name="submit" type="submit" class="btn btn-primary">
+                Submit your form
+            </button>
+
+            <div class="mt-3">
+                <a href="admin.php">View admin page</a>
+            </div>
+
+        </form>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="scripts/guestform.js"></script>
+
+</body>
+</html>
